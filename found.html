@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Found Missing Person</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #87CEEB;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #D32F2F;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 2px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.1s;
+        }
+
+        .back-button:hover {
+            background: #B71C1C;
+        }
+
+        .container {
+            background: #FFFFFF;
+            padding: 20px;
+            width: 80%;
+            max-width: 400px;
+            box-shadow: 0px 0px 10px #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #4682B4;
+        }
+
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button.submit {
+            background: #D32F2F;
+            color: #FFFFFF;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+        }
+
+        button.submit:hover {
+            background: #B71C1C;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Back Button -->
+    <button class="back-button" onclick="goBack()">← Back</button>
+
+    <div class="container">
+        <h2>Found Missing Person</h2>
+        <p>If you have found a missing person, please provide details below.</p>
+    </div>
+
+    <div class="container">
+        <h3>Add Your Photo with the Missing Person</h3>
+        <input type="file" accept="image/*">
+    </div>
+
+    <div class="container">
+        <h3>Add Location</h3>
+        <input type="text" placeholder="Enter location">
+    </div>
+
+    <div class="container">
+        <button class="submit" type="submit">Submit Report</button>
+    </div>
+
+    <script>
+        function goBack() {
+            window.history.back(); // Go back to the previous page
+        }
+    </script>
+
+</body>
+</html>

@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Find and Reward - Login</title>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
-
     <style>
         * {
             margin: 0;
@@ -29,12 +26,10 @@
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             text-align: center;
-            position: relative;
         }
         .language {
-            position: absolute;
-            top: 10px;
-            left: 10px;
+            text-align: left;
+            margin-bottom: 10px;
         }
         select {
             padding: 5px;
@@ -45,32 +40,26 @@
             color: #283593;
             margin-bottom: 20px;
         }
-        .input-group {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 10px;
-        }
         input {
             width: 100%;
             padding: 10px;
+            margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
         .btn {
+            width: 100%;
             padding: 10px;
             background: #D32F2F;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 16px;
         }
         .forgot {
-            position: absolute;
-            bottom: 10px;
-            left: 10px;
-            font-size: 12px;
+            display: block;
+            margin-top: 10px;
             color: #D32F2F;
             text-decoration: none;
         }
@@ -78,33 +67,9 @@
             display: none;
         }
     </style>
-
     <script>
-        const firebaseConfig = {
-            apiKey: "YOUR_FIREBASE_API_KEY",
-            authDomain: "YOUR_FIREBASE_AUTH_DOMAIN",
-            projectId: "YOUR_FIREBASE_PROJECT_ID",
-            storageBucket: "YOUR_FIREBASE_STORAGE_BUCKET",
-            messagingSenderId: "YOUR_FIREBASE_SENDER_ID",
-            appId: "YOUR_FIREBASE_APP_ID"
-        };
-        
-        firebase.initializeApp(firebaseConfig);
-        const auth = firebase.auth();
-
-        function sendOTP() {
-            let phoneNumber = document.getElementById("phone").value;
-            let appVerifier = new firebase.auth.RecaptchaVerifier("sendOTP");
-            auth.signInWithPhoneNumber(phoneNumber, appVerifier)
-                .then(confirmationResult => {
-                    window.confirmationResult = confirmationResult;
-                    document.getElementById("otpField").style.display = "block";
-                    alert("OTP Sent Successfully!");
-                })
-                .catch(error => {
-                    console.error(error);
-                    alert("Failed to send OTP");
-                });
+        function showOTPField() {
+            document.getElementById("otpField").style.display = "block";
         }
     </script>
 </head>
@@ -115,23 +80,15 @@
             <select id="language">
                 <option value="en">English</option>
                 <option value="hi">Hindi</option>
-                <option value="te">Telugu</option>
             </select>
         </div>
         <h2>Signin</h2>
-        
-        <!-- Phone Number and OTP Button in One Line -->
-        <div class="input-group">
-            <input type="tel" id="phone" placeholder="Enter Phone Number" required>
-            <button class="btn" id="sendOTP" onclick="sendOTP()">Send OTP</button>
-        </div>
-
+        <input type="tel" placeholder="Enter Phone Number" required>
+        <button class="btn" onclick="showOTPField()">Send OTP</button>
         <input type="text" id="otpField" placeholder="Enter OTP" required>
         <input type="password" placeholder="Enter Password" required>
-        
-        <button class="btn"><a href = "main.html" style="text-decoration: none;">Sign in</a></button>
-
-        <a href = "forgot.html" style="text-decoration: none;">Forgot Password?</a>
+        <a href="forgot.html" class="forgot" style="text-decoration: none;">Forgot Password?</a>
+        <button class="btn"><a href="main.html" style="text-decoration: none;">Signin</a></button>
     </div>
 </body>
 </html>

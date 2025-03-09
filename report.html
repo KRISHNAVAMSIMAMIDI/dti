@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Missing Person</title>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-messaging.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #283593;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: #D32F2F;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Report a Missing Person</h2>
+        <form id="paymentForm">
+            <label>Full Name:</label>
+            <input type="text" required>
+
+            <label>Age:</label>
+            <input type="number" required>
+
+            <label>Gender:</label>
+            <select required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+
+            <label>Height (cm):</label>
+            <input type="number" required>
+
+            <label>Hair Color:</label>
+            <input type="text" required>
+
+            <label>Identifying Marks (Moles, Scars, etc.):</label>
+            <input type="text">
+
+            <label>Dress Color:</label>
+            <input type="text">
+
+            <label>Parent's Name:</label>
+            <input type="text" required>
+
+            <label>Parent's Phone Number:</label>
+            <input type="tel" required>
+
+            <label>Last Known Location:</label>
+            <input type="text" id="lastKnownLocation" required>
+
+            <label>Group Photo:</label>
+            <input type="file" accept="image/*">
+
+            <label>Child's Photo:</label>
+            <input type="file" accept="image/*">
+
+            <label>Submission Fee (₹500):</label>
+            <input type="number" value="500" readonly>
+
+            <label>Payment Mode:</label>
+            <select id="paymentMode" required>
+                <option value="upi">UPI</option>
+                <option value="credit_card">Credit Card</option>
+                <option value="debit_card">Debit Card</option>
+                <option value="net_banking">Net Banking</option>
+            </select>
+
+            <p style="text-align: center; margin-top: 10px;">₹500 submission fee is mandatory for submitting the application to prevent misuse of the app.</p>
+            
+            <label>Reward Amount (Payable to Finder):</label>
+            <input type="number" placeholder="Enter reward amount">
+            
+            <button type="button" class="btn" onclick="processPayment()"><a href = "thank.html" style="text-decoration: none;"></a>Proceed to Payment</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            if (!window.Razorpay) {
+                console.error("Razorpay SDK failed to load.");
+            }
+        });
+
+        function processPayment() {
+            if (!window.Razorpay) {
+                alert("Payment gateway not available. Please try again later.");
+                return;
+            }
+            
+            var options = {
+                "key": "rzp_test_yourapikey", // Replace with your Razorpay API key
+                "amount": 50000, // Amount in paise (₹500)
+                "currency": "INR",
+                "name": "Find and Reward System",
+                "description": "Submission Fee Payment",
+                "handler": function (response) {
+                    alert("Payment Successful! Payment ID: " + response.razorpay_payment_id);
+                    sendAlertToNearbyUsers();
+                },
+                "theme": {
+                    "color": "#D32F2F"
+                }
+            };
+            try {
+                var rzp1 = new Razorpay(options);
+                rzp1.open();
+            } catch (error) {
+                console.error("Error initializing Razorpay: ", error);
+            }
+        }
+
+        function sendAlertToNearbyUsers() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(position => {
+                    const userLat = position.coords.latitude;
+                    const userLng = position.coords.longitude;
+                    const lastKnownLocation = document.getElementById("lastKnownLocation").value;
+                    alert("Alert sent to users near: " + lastKnownLocation);
+                }, error => {
+                    alert("Unable to access location. Please enter manually.");
+                    console.error("Error fetching location: ", error);
+                });
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+    </script>
+</body>
+</html>
