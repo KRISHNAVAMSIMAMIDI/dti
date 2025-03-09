@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Missing Person Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #87CEEB;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 700px;
+            background: #FFFFFF;
+            padding: 30px;
+            margin: auto;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+        img {
+            width: 80%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        h1 {
+            color: #283593;
+        }
+        .details {
+            text-align: left;
+            margin-top: 20px;
+            color: #17171a;
+        }
+        .details p {
+            font-size: 18px;
+            margin: 8px 0;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .buttons button {
+            padding: 12px 20px;
+            font-size: 16px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            color: #FFFFFF;
+            transition: 0.3s;
+        }
+        .real-world {
+            background-color: #4CAF50;
+            padding: 8px 16px;
+            font-size: 14px;
+            border-radius: 5px;
+            color: #FFFFFF;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+        .real-world:hover {
+            background-color: #388E3C;
+        }
+        .found {
+            background-color: #D32F2F;
+        }
+        .found:hover {
+            background-color: #b71c1c;
+        }
+        .search {
+            background-color: #87CEEB;
+            color: #283593;
+        }
+        .search:hover {
+            background-color: #5faac5;
+        }
+        .back {
+            background-color: #000000;
+            padding: 12px 20px;
+            font-size: 16px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            color: #FFFFFF;
+            transition: 0.3s;
+        }
+        .back:hover {
+            background-color: #333333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>MISSING PERSON</h1>
+        <img src="https://thecsrjournal.in/wp-content/uploads/2023/10/Girl-child-1.jpg" alt="Missing Person Photo">
+        <div class="details">
+            <p><strong>Name:</strong> Tulasi Palli</p>
+            <p><strong>Age:</strong> 5</p>
+            <p><strong>Gender:</strong> Male</p>
+            <p><strong>Height:</strong> 3 feet</p>
+            <p><strong>Weight:</strong> 15 lbs</p>
+            <p><strong>Eye Color:</strong> Brown</p>
+            <p><strong>Hair Color:</strong> Black</p>
+            <p><strong>Last Seen:</strong> March 5, 2025, near Central Park, New York</p>
+            <p><strong>Clothing:</strong> Pink dress with white shoes</p>
+        </div>
+        <div class="buttons">
+            <button class="found" onclick="alert('This person has been marked as found!')">Found</button>
+            <button class="search" onclick="alert('Searching for this person...')">Search</button>
+            <button class="back" onclick="history.back()">Back</button>
+        </div>
+    </div>
+</body>
+</html>
