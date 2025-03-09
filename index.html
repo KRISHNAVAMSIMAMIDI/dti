@@ -1,46 +1,131 @@
+<!DOCTYPE html>
 <html lang="en">
-<head><title>KRISHNA VAMSI MAMIDI</title>
-    <link rel="stylesheet" href="style.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Find and Reward System</title>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #283593;
+            margin-bottom: 15px;
+        }
+        .input-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background: #D32F2F;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+        .forgot-password {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #555;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-
-    <div id="navbar">
-        
-        <a id="logo1"> HELLO</a>
-        <a id="logo2"> NAMASTE</a>
-         <a id="logo3"> ADAB</a>
-         
-
-        
+    <div class="container">
+        <h2>Login</h2>
+        <select>
+            <option>English</option>
+            <option>Hindi</option>
+            <option>Telugu</option>
+        </select>
+        <div class="input-group">
+            <input type="tel" id="phoneNumber" placeholder="Enter phone number">
+            <button class="btn" onclick="sendOTP()">Send OTP</button>
+        </div>
+        <input type="text" id="otp" placeholder="Enter OTP" style="display: none;">
+        <input type="password" id="password" placeholder="Enter Password">
+        <button class="btn" id="verifyBtn" style="display: none;" onclick="verifyOTP()">Verify & Login</button>
+        <p class="forgot-password" onclick="forgotPassword()">Forgot Password?</p>
     </div>
-    
-    <h1><u>ABOUT MYSELF</u></h1>
 
-    <p>My name is Krishna Vamsi Mamidi. I am 18 years old passionate<br> 
-		towards artforms and acquring knowledge.I live in a village <br>
-		S.Agraharam near Routhulapudi town in Andhra Pradesh.<br>
-        I have completed my schooling in Sri Chaitanya School,Tuni <br>
-		and my intermediate in Sri Chaitanya Junior College,Tuni.<br>
-        Currently, I am Pursuing my Bachelor of Technology at Gayathri <br>
-		Vidhya Parishad College of Engineering[madhurawada,vishakapatnam] <br> 
-		with a computer science stream and my current aggregate is 9.46<br>
-
-
-    </p>
-    <div id="footer">
-        <p><u>CONTACT ME:</u><br>
-            <br>
-        Phone: 6300000000<br>
-        Email:mamidikrishnavamsi4@gmail.com<br>
-        instagram:_iamkrishnavamsi
-        </p>
-
+    <script>
+        const firebaseConfig = {
+            apiKey: "YOUR_FIREBASE_API_KEY",
+            authDomain: "YOUR_FIREBASE_AUTH_DOMAIN",
+            projectId: "YOUR_FIREBASE_PROJECT_ID",
+            storageBucket: "YOUR_FIREBASE_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_FIREBASE_SENDER_ID",
+            appId: "YOUR_FIREBASE_APP_ID"
+        };
         
-    </div>
-    
-    
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
 
-	
+        function sendOTP() {
+            let phoneNumber = document.getElementById("phoneNumber").value;
+            let appVerifier = new firebase.auth.RecaptchaVerifier("sendOTP");
+            auth.signInWithPhoneNumber(phoneNumber, appVerifier)
+                .then(confirmationResult => {
+                    window.confirmationResult = confirmationResult;
+                    document.getElementById("otp").style.display = "block";
+                    document.getElementById("verifyBtn").style.display = "block";
+                    alert("OTP Sent Successfully!");
+                })
+                .catch(error => {
+                    console.error(error);
+                    alert("Failed to send OTP");
+                });
+        }
 
+        function verifyOTP() {
+            let otp = document.getElementById("otp").value;
+            window.confirmationResult.confirm(otp)
+                .then(result => {
+                    alert("Login Successful!");
+                    window.location.href = "home.html";
+                })
+                .catch(error => {
+                    console.error(error);
+                    alert("Invalid OTP");
+                });
+        }
+        
+        function forgotPassword() {
+            alert("Redirecting to Forgot Password Page");
+        }
+    </script>
 </body>
 </html>
