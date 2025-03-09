@@ -3,92 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Find and Reward - Login</title>
+    <title>Find & Reward</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
         body {
-            background-color:#87CEEB;
+            font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            background-color: #f8f8f8;
+            flex-direction: column;
         }
         .container {
+            text-align: center;
             background: white;
             padding: 20px;
-            width: 90%;
-            max-width: 400px;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
         }
-        .language {
-            text-align: left;
+        .logo {
+            font-size: 24px;
             margin-bottom: 10px;
         }
-        select {
-            padding: 5px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-        h2 {
-            color: #283593;
-            margin-bottom: 20px;
+        form {
+            display: flex;
+            flex-direction: column;
         }
         input {
-            width: 100%;
             padding: 10px;
             margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-        .btn {
-            width: 100%;
+        button {
             padding: 10px;
-            background: #D32F2F;
-            color: white;
             border: none;
-            border-radius: 5px;
             cursor: pointer;
-            font-size: 16px;
+            border-radius: 5px;
+            margin: 5px 0;
         }
-        .forgot {
-            display: block;
-            margin-top: 10px;
-            color: #D32F2F;
-            text-decoration: none;
+        .login {
+            background-color: #4CAF50;
+            color: white;
         }
-        #otpField {
-            display: none;
+        .register {
+            background-color: #dddddd;
+            color: black;
+        }
+        .login:hover {
+            background-color: #45a049;
+        }
+        .register:hover {
+            background-color: #ccc;
         }
     </style>
-    <script>
-        function showOTPField() {
-            document.getElementById("otpField").style.display = "block";
-        }
-    </script>
 </head>
 <body>
+   
     <div class="container">
-        <div class="language">
-            <label for="language">Language:</label>
-            <select id="language">
-                <option value="en">English</option>
-                <option value="hi">Hindi</option>
-            </select>
-        </div>
-        <h2>Signin</h2>
-        <input type="tel" placeholder="Enter Phone Number" required>
-        <button class="btn" onclick="showOTPField()">Send OTP</button>
-        <input type="text" id="otpField" placeholder="Enter OTP" required>
-        <input type="password" placeholder="Enter Password" required>
-        <a href="forgot.html" class="forgot" style="text-decoration: none;">Forgot Password?</a>
-        <a href="main.html" style="text-decoration: none;"><button class="btn">Signin</a></button>
+        <h1 class="logo">🔍 Find and Reward</h1>
+        <h2>Welcome Back!</h2>
+        <p>Log in to your account or register to get started.</p>
+        <form>
+            <input type="Phone Number" placeholder="Phone Number" required>
+            <input type="OTP" placeholder="OTP" required>
+            <a href ="final.html" style="text-decoration: none;">
+            <button type="submit" class="login">Log in</button>
+            </a>
+        </form>
     </div>
 </body>
 </html>
