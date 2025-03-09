@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,25 +16,6 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            position: relative;
-        }
-
-        .back-button {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background: #D32F2F;
-            color: white;
-            padding: 5px 10px;
-            border: none;
-            border-radius: 2px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: 0.1s;
-        }
-
-        .back-button:hover {
-            background: #B71C1C;
         }
 
         .container {
@@ -72,37 +53,52 @@
             background: #B71C1C;
         }
 
+        .back-link {
+            display: block;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            text-decoration: none;
+            background: #D32F2F;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 2px;
+            font-size: 16px;
+        }
+
+        .back-link:hover {
+            background: #B71C1C;
+        }
+
     </style>
 </head>
 <body>
 
-    <!-- Back Button -->
-    <button class="back-button" onclick="goBack()">← Back</button>
+    <!-- Back Button (No JavaScript, Uses a Simple Link) -->
+    <a href="index.html" class="back-link">← Back</a>
 
     <div class="container">
         <h2>Found Missing Person</h2>
         <p>If you have found a missing person, please provide details below.</p>
     </div>
 
-    <div class="container">
-        <h3>Add Your Photo with the Missing Person</h3>
-        <input type="file" accept="image/*">
-    </div>
+    <form action="submit_report.html" method="post">
+        <div class="container">
+            <h3>Add Your Photo with the Missing Person</h3>
+            <label for="photo">Upload Photo:</label>
+            <input type="file" id="photo" name="photo" accept="image/*" required>
+        </div>
 
-    <div class="container">
-        <h3>Add Location</h3>
-        <input type="text" placeholder="Enter location">
-    </div>
+        <div class="container">
+            <h3>Add Location</h3>
+            <label for="location">Enter Location:</label>
+            <input type="text" id="location" name="location" placeholder="Enter location" required>
+        </div>
 
-    <div class="container">
-        <button class="submit" type="submit">Submit Report</button>
-    </div>
-
-    <script>
-        function goBack() {
-            window.history.back(); // Go back to the previous page
-        }
-    </script>
+        <div class="container">
+            <button class="submit" type="submit">Submit Report</button>
+        </div>
+    </form>
 
 </body>
 </html>
