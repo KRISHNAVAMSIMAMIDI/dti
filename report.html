@@ -91,7 +91,7 @@
     <a href="main.html" class="back-link">← Back</a>
     <div class="container">
         <h2>Report a Missing Person</h2>
-        <form id="paymentForm" onsubmit="return validateForm()">
+        <form id="paymentForm" action="thank.html" method="GET" onsubmit="return validateForm()">
             <div class="form-group">
                 <div>
                     <label for="fullName">Full Name:</label>
@@ -99,13 +99,13 @@
                 </div>
                 <div>
                     <label for="age">Age:</label>
-                    <input type="number" id="age" required>
+                    <input type="number" id="age">
                 </div>
             </div>
             <div class="form-group">
                 <div>
                     <label for="gender">Gender:</label>
-                    <select id="gender" required>
+                    <select id="gender">
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                         <option value="other">Other</option>
@@ -113,13 +113,13 @@
                 </div>
                 <div>
                     <label for="height">Height (cm):</label>
-                    <input type="number" id="height" required>
+                    <input type="number" id="height">
                 </div>
             </div>
             <div class="form-group">
                 <div>
                     <label for="hairColor">Hair Color:</label>
-                    <input type="text" id="hairColor" required>
+                    <input type="text" id="hairColor">
                 </div>
                 <div>
                     <label for="marks">Identifying Marks (Moles, Scars, etc.):</label>
@@ -133,17 +133,17 @@
                 </div>
                 <div>
                     <label for="parentName">Parent's Name:</label>
-                    <input type="text" id="parentName" required>
+                    <input type="text" id="parentName">
                 </div>
             </div>
             <div class="form-group">
                 <div>
                     <label for="parentPhone">Parent's Phone Number:</label>
-                    <input type="tel" id="parentPhone" required>
+                    <input type="tel" id="parentPhone">
                 </div>
                 <div>
                     <label for="location">Last Known Location:</label>
-                    <input type="text" id="location" required>
+                    <input type="text" id="location">
                 </div>
             </div>
             <div class="form-group">
@@ -163,7 +163,7 @@
                 </div>
                 <div>
                     <label for="paymentMode">Payment Mode:</label>
-                    <select id="paymentMode" required>
+                    <select id="paymentMode">
                         <option value="upi">UPI</option>
                         <option value="credit_card">Credit Card</option>
                         <option value="debit_card">Debit Card</option>
@@ -185,18 +185,14 @@
     <script>
         // Validate form before submitting
         function validateForm() {
-            const form = document.getElementById("paymentForm");
-            const inputs = form.querySelectorAll("input, select");
-
-            // Check if all required fields are filled
-            for (let i = 0; i < inputs.length; i++) {
-                if (inputs[i].hasAttribute('required') && !inputs[i].value) {
-                    alert("Please fill out all required fields before proceeding.");
-                    return false; // Prevent form submission
-                }
+            const fullName = document.getElementById("fullName").value;
+            
+            if (!fullName) {
+                alert("Please enter the full name.");
+                return false; // Prevent form submission if full name is not filled
             }
 
-            return true; // Allow form submission
+            return true; // Allow form submission if full name is filled
         }
     </script>
 </body>
