@@ -71,6 +71,9 @@
             font-size: 1.1rem;
             cursor: pointer;
             transition: background 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
         }
 
         .login-btn:hover {
@@ -88,20 +91,64 @@
         .forgot-password:hover {
             text-decoration: underline;
         }
+
+        .otp-section {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+        }
     </style>
 </head>
 
 <body>
     <div class="login-container">
         <h1>Alert 365 - Login</h1>
-        <p>Welcome back! Please enter your credentials to continue.</p>
-        <form action="main.html" method="POST"> <!-- Updated the form action to navigate to main.html -->
-            <input type="email" name="email" class="input-field" placeholder="Email Address" required>
-            <input type="password" name="password" class="input-field" placeholder="Password" required>
+        <p>Welcome back! Please enter your email to continue.</p>
+
+        <!-- Login form -->
+        <form id="login-form">
+            <input type="email" id="email" class="input-field" placeholder="Email Address" required>
             <button type="submit" class="login-btn">Login</button>
         </form>
+
+        <!-- OTP section (hidden initially) -->
+        <div class="otp-section" id="otp-section">
+            <p>An OTP has been sent to your email. Please enter it below to continue.</p>
+            <input type="text" id="otp" class="input-field" placeholder="Enter OTP" required>
+            <button type="button" class="login-btn" onclick="navigateToNextPage()">Verify OTP</button>
+        </div>
+
         <a href="forgot-password.html" class="forgot-password">Forgot Password?</a>
     </div>
+
+    <script>
+        // Simulated OTP generation and sending
+        let generatedOTP = "123456"; // Simulated OTP
+
+        // Handle login form submission (only email)
+        document.getElementById('login-form').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Simulate validating the email (no password required)
+            const email = document.getElementById('email').value;
+
+            if (email) {
+                // Simulate sending OTP to email
+                alert("OTP has been sent to your email: " + email);
+
+                // Show OTP input section
+                document.getElementById('otp-section').style.display = 'block';
+            } else {
+                alert("Please enter an email address.");
+            }
+        });
+
+        // Function to navigate to next page (main.html)
+        function navigateToNextPage() {
+            // Regardless of OTP correctness, navigate to main.html
+            window.location.href = "main.html"; // Replace with actual main page URL
+        }
+    </script>
 </body>
 
 </html>
