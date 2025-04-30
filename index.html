@@ -1,97 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Find and Reward - Login</title>
+    <title>Alert 365 - Login</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+
         body {
-            background-color: #87CEEB;
+            background: linear-gradient(135deg, #64b5f6, #1e88e5);
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            color: #fff;
         }
-        .container {
-            background: white;
-            padding: 20px;
-            width: 90%;
+
+        .login-container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 30px 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            width: 100%;
             max-width: 400px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
-        .language {
-            text-align: left;
-            margin-bottom: 10px;
+
+        .login-container h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #fff;
         }
-        select {
-            padding: 5px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-        h2 {
-            color: #283593;
+
+        .login-container p {
+            font-size: 1rem;
+            color: #e3f2fd;
             margin-bottom: 20px;
         }
-        input {
+
+        .input-field {
             width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
+            padding: 12px;
+            margin-bottom: 15px;
+            background-color: #ffffff;
+            border: none;
             border-radius: 5px;
+            color: #333;
+            font-size: 1rem;
         }
-        .btn {
+
+        .input-field:focus {
+            outline: none;
+            border: 2px solid #64b5f6;
+        }
+
+        .login-btn {
             width: 100%;
-            padding: 10px;
-            background: #D32F2F;
+            padding: 12px;
+            background-color: #d32f2f;
             color: white;
             border: none;
             border-radius: 5px;
+            font-size: 1.1rem;
             cursor: pointer;
-            font-size: 16px;
+            transition: background 0.3s ease;
         }
-        .forgot {
+
+        .login-btn:hover {
+            background-color: #c2185b;
+        }
+
+        .forgot-password {
             display: block;
             margin-top: 10px;
-            color: #D32F2F;
+            font-size: 0.9rem;
+            color: #fff;
             text-decoration: none;
         }
-        #otpField {
-            display: none;
+
+        .forgot-password:hover {
+            text-decoration: underline;
         }
     </style>
-    <script>
-        function showOTPField() {
-            document.getElementById("otpField").style.display = "block";
-        }
-    </script>
 </head>
+
 <body>
-    <div class="container">
-        <div class="language">
-            <label for="language">Language:</label>
-            <select id="language">
-                <option value="en">English</option>
-                <option value="hi">Hindi</option>
-            </select>
-        </div>
-        <h1>FIND AND REWARD</h1>
-        <h2>Signin</h2>
-        <input type="tel" placeholder="Enter Phone Number" required>
-        <button class="btn" onclick="showOTPField()">Send OTP</button>
-        <input type="text" id="otpField" placeholder="Enter OTP" required>
-        <input type="password" placeholder="Enter Password" required>
-        <a href="forgot.html"  style="text-decoration: none;" class="forgot">Forgot Password?</a>
-        <a href="main.html"  style="text-decoration: none;">
-        <button class="btn">Signin</button>
-        </a>
+    <div class="login-container">
+        <h1>Alert 365 - Login</h1>
+        <p>Welcome back! Please enter your credentials to continue.</p>
+        <form action="#" method="POST">
+            <input type="email" name="email" class="input-field" placeholder="Email Address" required>
+            <input type="password" name="password" class="input-field" placeholder="Password" required>
+            <a hreaf = "main.html"><button type="submit" class="login-btn">Login</button></a>
+        </form>
+        <a href="forgot-password.html" class="forgot-password">Forgot Password?</a>
     </div>
 </body>
+
 </html>

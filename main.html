@@ -1,83 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Find and Reward - Home</title>
+    <title>Alert 365 - Home</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+
         body {
-            background-color: #87CEEB;
+            background: linear-gradient(135deg, #64b5f6, #1e88e5);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            color: #fff;
+            padding: 0;
+            margin: 0;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #64b5f6, #1e88e5); /* Same gradient for uniform color */
+            width: 100%;
+            height: 50vh; /* Reduced space for better card placement */
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-        }
-        .container {
-            width: 90%;
-            max-width: 400px;
             text-align: center;
-        }
-        .block {
-            background: white;
-            padding: 20px;
-            margin: 15px 0;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        h2 {
-            color: #283593;
-            margin-bottom: 10px;
-        }
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            background: #D32F2F;
             color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 10px;
-            text-align: center;
-        }
-        .back-link {
-            display: block;
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            text-decoration: none;
-            background: #D32F2F;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 2px;
-            font-size: 16px;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-blend-mode: overlay;
         }
 
-        .back-link:hover {
-            background: #B71C1C;
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .home-container {
+            width: 90%;
+            max-width: 900px;
+            text-align: center;
+            margin-top: -40px; /* Reduced space above cards */
+            background: linear-gradient(135deg, #64b5f6, #1e88e5); /* Same gradient for cards */
+            padding: 30px 0; /* Padding to add spacing inside */
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .option {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .option:hover {
+            transform: scale(1.05);
+        }
+
+        .option h2 {
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .option p {
+            font-size: 1rem;
+            color: #e3f2fd;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            background-color: #d32f2f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #c2185b;
+        }
+
+        /* Footer Styling */
+        .footer {
+            background-color: #1e88e5;
+            width: 100%;
+            padding: 30px 0;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .footer p {
+            font-size: 1rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .footer a {
+            color: #e3f2fd;
+            text-decoration: none;
+            font-size: 1rem;
+            margin: 0 15px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer .social-icons {
+            margin-top: 20px;
+        }
+
+        .footer .social-icons a {
+            color: #fff;
+            font-size: 1.5rem;
+            margin: 0 15px;
+        }
+
+        .footer .social-icons a:hover {
+            color: #D32F2F;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+
+            .hero-section p {
+                font-size: 1rem;
+            }
+
+            .home-container {
+                width: 90%;
+                max-width: 600px;
+            }
+
+            .option h2 {
+                font-size: 1.5rem;
+            }
+
+            .option p {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
+
 <body>
-    <a href="index.html" class="back-link">← Back</a>
-    <div class="container">
-        <div class="block">
-            <h2>Report a Missing Person</h2>
-            <a href="report.html" class="btn"  style="text-decoration: none;">Report Now</a>
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div>
+            <h1>Welcome to Alert 365</h1>
+            <p>Your trusted app to report and find missing persons in real-time.</p>
         </div>
-        <div class="block">
-            <h2>Search for a Missing Person</h2>
-            <a href="user1.html" class="btn" style="text-decoration: none;">Search</a>
+    </div>
+
+    <!-- Home Container with Options -->
+    <div class="home-container">
+        <div class="option">
+            <h2>Report a Case</h2>
+            <p>If you have a missing person to report, let us know and help us assist you.</p>
+            <a href="report.html" class="btn">Report Now</a>
         </div>
-        <div class="block">
-            <h2>App Info</h2>
-            <a href="info.html" class="btn">Learn More</a>
+
+        <div class="option">
+            <h2>Find Missing Person</h2>
+            <p>Search for missing persons in your area or elsewhere to offer assistance.</p>
+            <a href="search.html" class="btn">Search Now</a>
+        </div>
+
+        <div class="option">
+            <h2>How the App Works</h2>
+            <p>Learn more about how Alert 365 helps in finding missing persons effectively.</p>
+            <a href="how-it-works.html" class="btn">Learn More</a>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <div class="footer">
+        <p>&copy; 2025 Alert 365. All rights reserved.</p>
+        <p>Contact us: <a href="mailto:support@alert365.com">support@alert365.com</a></p>
+        <div class="social-icons">
+            <a href="https://twitter.com" target="_blank">🐦</a>
+            <a href="https://instagram.com" target="_blank">📸</a>
+            <a href="https://youtube.com" target="_blank">📹</a>
         </div>
     </div>
 </body>
+
 </html>
