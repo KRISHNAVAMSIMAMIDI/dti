@@ -1,52 +1,110 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Found Missing Person</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background: #87CEEB;
+        * {
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        .container {
-            background: #FFFFFF;
-            padding: 20px;
-            width: 80%;
-            max-width: 400px;
-            box-shadow: 0px 0px 10px #ccc;
-            border-radius: 5px;
+        body {
+            background: linear-gradient(135deg, #64b5f6, #1e88e5); /* Same gradient as main page */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            color: #fff;
+            padding: 0;
+            margin: 0;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #64b5f6, #1e88e5); /* Same gradient for header */
+            width: 100%;
+            height: 50vh; /* Adjusted height for better card placement */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-blend-mode: overlay;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: bold;
             margin-bottom: 20px;
         }
 
-        h2 {
-            color: #4682B4;
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
         }
 
-        input, button {
+        .form-container {
+            width: 90%;
+            max-width: 900px;
+            display: flex;
+            justify-content: space-between;
+            margin-top: -40px; /* Reduced space above form */
+        }
+
+        .form-card {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            width: 48%; /* Adjusted width to fit two cards side by side */
+            transition: all 0.3s ease;
+        }
+
+        .form-card:hover {
+            transform: scale(1.05);
+        }
+
+        .form-card h3 {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .form-card label {
+            font-size: 1rem;
+            color: #e3f2fd;
+            margin-bottom: 8px;
+        }
+
+        .form-card input {
             width: 100%;
             padding: 10px;
-            margin: 10px 0;
+            margin: 8px 0;
             border: 1px solid #ccc;
             border-radius: 5px;
             font-size: 16px;
         }
 
+        /* Adjusted Submit Button */
         button.submit {
             background: #D32F2F;
-            color: #FFFFFF;
-            font-size: 16px;
+            color: #FFFFFF; /* White text for contrast */
+            font-size: 24px; /* Increased font size */
+            font-weight: bold; /* Bold text for better emphasis */
             cursor: pointer;
             border: none;
+            width: 100%; /* Set the width to 100% to stretch it to full length */
+            padding: 20px 0; /* Increased padding for more space around the text */
+            border-radius: 5px;
+            transition: background 0.3s;
+            margin-top: 20px; /* Adjusting space between the form cards and submit button */
+            text-align: center; /* Centering text inside the button */
         }
 
         button.submit:hover {
@@ -70,33 +128,52 @@
             background: #B71C1C;
         }
 
+        /* Centering Submit Button Below Cards */
+        .submit-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 20px; /* Adjusting space between the form cards and submit button */
+        }
+
     </style>
 </head>
 <body>
 
-    <!-- Back Button (No JavaScript, Uses a Simple Link) -->
-    <a href="index.html" class="back-link">← Back</a>
-
-    <div class="container">
-        <h2>Found Missing Person</h2>
-        <p>If you have found a missing person, please provide details below.</p>
+    <!-- Hero Section (Title and Description) -->
+    <div class="hero-section">
+        <div>
+            <h1>Found Missing Person</h1>
+            <p>If you have found a missing person, please provide the details below.</p>
+        </div>
     </div>
 
-        <div class="container">
+    <!-- Form Section (Two Cards Side by Side) -->
+    <div class="form-container">
+        <!-- Photo Upload Card -->
+        <div class="form-card">
             <h3>Add Your Photo with the Missing Person</h3>
             <label for="photo">Upload Photo:</label>
             <input type="file" id="photo" name="photo" accept="image/*" required>
         </div>
 
-        <div class="container">
+        <!-- Location Input Card -->
+        <div class="form-card">
             <h3>Add Location</h3>
             <label for="location">Enter Location:</label>
             <input type="text" id="location" name="location" placeholder="Enter location" required>
         </div>
+    </div>
 
-        <div class="container">
-            <a href="final.html" style="text-decoration: none;"> <button class="submit" type="submit">Submit Report</button></a>
-        </div>
+    <!-- Submit Button -->
+    <div class="submit-container">
+        <a href="final.html" style="text-decoration: none;">
+            <button class="submit" type="submit">Submit Report</button>
+        </a>
+    </div>
+
+    <!-- Back Button -->
+    <a href="main.html" class="back-link">← Back</a>
 
 </body>
 </html>

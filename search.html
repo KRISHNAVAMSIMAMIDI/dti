@@ -5,34 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Open Google Maps</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background: #87CEEB;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #64b5f6, #1e88e5); /* Same gradient as welcome page */
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            height: 100vh;
+            justify-content: center;
+            color: white;
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 700px;
+            text-align: center;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #283593;
+            margin-bottom: 30px;
         }
 
         .start-button {
             display: inline-block;
             background: #D32F2F;
             color: white;
-            padding: 15px 30px;
-            font-size: 18px;
+            padding: 20px 50px;
+            font-size: 24px;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 10px;
+            transition: background 0.3s ease;
         }
 
         .start-button:hover {
             background: #B71C1C;
         }
+
         .back-link {
-            display: block;
             position: absolute;
             top: 10px;
             left: 10px;
@@ -40,19 +63,40 @@
             background: #D32F2F;
             color: white;
             padding: 5px 10px;
-            border-radius: 2px;
+            border-radius: 5px;
             font-size: 16px;
+            transition: background 0.3s ease;
         }
 
         .back-link:hover {
             background: #B71C1C;
         }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .start-button {
+                font-size: 20px;
+                padding: 15px 40px;
+            }
+        }
     </style>
 </head>
 <body>
-    <a href="index.html" class="back-link">← Back</a>
-    <h2>Click the Button to Open Google Maps</h2>
-    <a href="https://www.google.com/maps" target="_blank" class="start-button">Start</a>
+    <!-- Back Button -->
+    <a href="main.html" class="back-link">← Back</a>
 
+    <!-- Container with content -->
+    <div class="container">
+        <h2>Click the Button to Open Google Maps</h2>
+        <a href="https://www.google.com/maps" target="_blank" class="start-button">Start</a>
+    </div>
 </body>
 </html>
